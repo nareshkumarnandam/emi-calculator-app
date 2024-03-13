@@ -1,34 +1,33 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 
-export default function BasicSelect() {
-  const [age, setAge] = React.useState('Five Years');
+const TenureSelect = ({ data, setData }) => {
 
   const handleChange = (event) => {
-    setAge(event.target.value);
+    setData({...data, loanTerm: event.target.value});
   };
 
   return (
-    <Box sx={{ minWidth: 120 }}>
-      <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Tenure</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={age}
-          label="Tenure"
-          onChange={handleChange}
-        >
-          <MenuItem value={5}>5 years</MenuItem>
-          <MenuItem value={10}>10 years</MenuItem>
-          <MenuItem value={15}>15 years</MenuItem>
-          <MenuItem value={20}>20 years</MenuItem>
-        </Select>
-      </FormControl>
-    </Box>
+    <FormControl fullWidth>
+      <InputLabel id="demo-simple-select-label">Tenure</InputLabel>
+      <Select
+        labelId="demo-simple-select-label"
+        id="demo-simple-select"
+        value={data.loanTerm}
+        label="Tenure"
+        defaultValue={5}
+        onChange={handleChange}
+      >
+        <MenuItem value={5}>5 years</MenuItem>
+        <MenuItem value={10}>10 years</MenuItem>
+        <MenuItem value={15}>15 years</MenuItem>
+        <MenuItem value={20}>20 years</MenuItem>
+        <MenuItem value={25}>25 years</MenuItem>
+      </Select>
+    </FormControl>
   );
-}
+};
+
+export default TenureSelect;
